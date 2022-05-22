@@ -7,25 +7,26 @@ import { Project } from './employee/entity/project.entity';
 import { Location } from 'graphql';
 
 @Module({
-  imports: [EmployeeModule, GraphQLFederationModule.forRoot(
-    {
+  imports: [
+    EmployeeModule,
+    GraphQLFederationModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
       buildSchemaOptions: {
-        orphanedTypes: [Project, Location]
-      }
-    }
-  ),
+        orphanedTypes: [Project, Location],
+      },
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'nairobi',
-      password: '1qazxsw2#',
+      username: 'postgres',
+      password: 'postgres',
       database: 'employee-fed-db',
-      entities: ["dist/**/*.entity{.ts,.js}"],
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
-    }),],
+    }),
+  ],
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}

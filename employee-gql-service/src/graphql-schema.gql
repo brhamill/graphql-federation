@@ -49,4 +49,5 @@ input EmployeeCreateDTO {
   designation: String!
   city: String
   projectId: String!
+  locationId: String!
 }
